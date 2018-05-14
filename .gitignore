@@ -1,0 +1,11 @@
+node_modules
+firebase.json
+.firebaserc
+package-lock.json
+.DS_Store
+notes.txt
+functions/firebase-debug.log
+functions/config.js
+client_secret.json
+credentials.json
+service_acc.json
