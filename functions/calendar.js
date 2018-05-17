@@ -71,31 +71,39 @@ function getAccessToken(oAuth2Client, callback) {
 }
 
 function createCalendarEvent (auth) {
-		const calendar = google.calendar({version: configFile.CALENDAR_VERSION, auth});
-	  return new Promise((resolve, reject) => {
-	    calendar.events.list({
-	      auth: auth, // List events for time period
-	      calendarId: calendarId,
-	      timeMin: dateTimeStart.toISOString(),
-	      timeMax: dateTimeEnd.toISOString()
-	    }, (err, calendarResponse) => {
-	      // Check if there is a event already on the Bike Shop Calendar
-	      if (err || calendarResponse.data.items.length > 0) {
-	        reject(err || new Error('Requested time conflicts with another appointment'));
-	      } else {
-	        // Create event for the requested time period
-	        calendar.events.insert({ auth: auth,
-	          calendarId: calendarId,
-	          resource: {summary: summary,
-	            start: {dateTime: dateTimeStart},
-	            end: {dateTime: dateTimeEnd}}
-	        }, (err, event) => {
-	        	err ? reject(err) : resolve(event);
-	        });
-	      }
-	    });
-	  });
-	}
+	const calendar = google.calendar({version: configFile.CALENDAR_VERSION, auth});
+	console.log(`List - start: ${dateTimeStart} - end: ${dateTimeEnd}`);
+	return new Promise((resolve, reject) => {
+	calendar.events.list({
+	  auth: auth, // List events for time period
+	  calendarId: calendarId,
+	  timeMin: dateTimeStart,
+	  timeMax: dateTimeEnd
+	}, (err, calendarResponse) => {
+		  // Check if there is a event already on the Bike Shop Calendar
+		  if (err || calendarResponse.data.items.length > 0) {
+		    reject(err || new Error('Requested time conflicts with another appointment'));
+		  } else {
+		    // Create event for the requested time period
+		    calendar.events.insert({ auth: auth,
+		      calendarId: calendarId,
+		      resource: {summary: summary,
+		        start: {dateTime: dateTimeStart},
+		        end: {dateTime: dateTimeEnd}}
+		    }, (err, event) => {
+		    	if(err){
+		    		console.log('rejecting');
+		    		reject(err)
+		    		}
+		    	else{
+		    		console.log('resolving');
+		    		resolve(event);	
+		    	} 
+		    });
+		  }
+		});
+	});
+}
 
 function preCreateCalendarEvent(auth){
 	createCalendarEvent(auth,dateTimeStart,dateTimeEnd,summary)
