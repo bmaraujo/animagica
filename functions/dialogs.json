@@ -1,0 +1,7 @@
+{
+	"ACK" : ["<s>Ok.<break strength='weak'/></s>","<s>Certo.<break strength='weak'/></s>","<s>Claro.<break strength='weak'/></s>","<s>Entendi.<break strength='weak'/></s>","<s>Compreendo.<break strength='weak'/></s>","<s>Muito bem.<break strength='weak'/></s>","<s>Tudo bem.<break strength='weak'/></s>","<s>Beleza.<break strength='weak'/></s>"],
+	"CONFIRM_END" : [", correto?",", certo?", ", confirma?",", certinho?", ", pode marcar?"],
+	"CONFIRM_SERVICE" : ["Então é $1 para $2, $3 às $4", "$1, $3 às $4, para $2","Você vai trazer um $2, para $1, $3 às $4"],
+	"CONFIRM_2SERVICES" : ["Então é $1 e $5 para $2, $3 às $4", "$1 e $5, $3 às $4, para $2","Você vai trazer um $2, para $1 e $5, $3 às $4"],
+	"GET_MORE_INFO" : ["<s>Vou precisar de mais informações.</s>"]
+}

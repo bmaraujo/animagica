@@ -9,3 +9,4 @@ functions/config.js
 client_secret.json
 credentials.json
 service_acc.json
+config.js
