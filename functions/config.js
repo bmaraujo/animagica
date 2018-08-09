@@ -8,7 +8,7 @@ function define(name, value) {
 };
 
 // suggestions
-define('API_KEY', 'AIzaSyBExfsoVA_qyxUzJQj64C3ZPqBvBG6PLpk');
+define('API_KEY', '');
 define('AUTH_DOMAIN','cervejacomque.firebaseapp.com');
 define('DATABASE_URL','https://cervejacomque.firebaseio.com/');
 define('STORAGE_BUCKET','cervejacomque.appspot.com');
